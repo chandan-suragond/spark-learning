@@ -1,0 +1,12 @@
+SPARK INSTALLATION IN LOCAL MACHINE
+----------------------------------------
+
+1. Download latest jdk-11 from https://jdk.java.net/ and keep it in Java folder under Program Files
+
+2. Download & install Python. Currently spark supports Python upto 3.10 & 3.11 
+
+3. Download latest hadoop winutils from https://github.com/cdarlint/winutils and keep it in permanent loc. Init HADOOP_HOME & HADOOP_HOME\bin in PATH var
+
+4. Download compatible spark version from https://spark.apache.org/ and keep it in permanent loc. Init SPARK_HOME & SPARK_HOME\bin in PATH var
+
+5. Test the installation by running pyspark in the cmd prompt
