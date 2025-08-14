@@ -13,20 +13,29 @@ def main():
             .getOrCreate()
         logging.info("Spark session created successfully.")
 
-        # Sample data
-        people_data = [
-            ('Nivu', 27),
-            ('Chandan', 28),
-            ('Sahitya', 0)
-        ]
+        fire_df = spark.read \
+                    .format("csv") \
+                    .option("header", True) \
+                    .option("inferSchema", True) \
+                    .load(r"C:\Users\chasurag\Documents\my repos\Fire_Department_and_Emergency_Medical_Services_Dispatched_Calls_for_Service_20250806.csv")
 
-        # Create DataFrame
-        people_df = spark.createDataFrame(people_data, ["Name", "Age"])
-        logging.info("DataFrame created successfully.")
+        logging.info("Data loaded from fire.csv successfully.")
 
         # Display schema and data
-        people_df.printSchema()
-        people_df.show()
+        fire_df.printSchema()
+        # fire_df.show(5)
+        print(fire_df.columns)
+
+        # Count the number of records
+        record_count = fire_df.count()
+        logging.info("Number of records in fire data: %d", record_count)
+
+        fire_df.createOrReplaceTempView("fire_data")
+        logging.info("Temporary view 'fire_data' created.")
+        # Example SQL query
+        result_df = spark.sql("SELECT * FROM fire_data LIMIT 10")
+        logging.info("Executed SQL query on 'fire_data'.")
+        result_df.show()
 
     except Exception as e:
         logging.error("An error occurred: %s", e)
