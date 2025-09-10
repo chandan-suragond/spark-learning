@@ -17,7 +17,7 @@ def main():
                     .format("csv") \
                     .option("header", True) \
                     .option("inferSchema", True) \
-                    .load(r"C:\Users\chasurag\Documents\my repos\Fire_Department_and_Emergency_Medical_Services_Dispatched_Calls_for_Service_20250806.csv")
+                    .load(r"C:\Users\chasurag\Documents\my repos\data\Fire_Department_and_Emergency_Medical_Services_Dispatched_Calls_for_Service_20250806.csv")
 
         logging.info("Data loaded from fire.csv successfully.")
 
